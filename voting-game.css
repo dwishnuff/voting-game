@@ -6,7 +6,7 @@ h1, h2 {
 }
 
 body {
-  background: linear-gradient(blue,green,yellow);
+  background: linear-gradient(#3a3d42,#292b2d,black);
   height: 100vh;
 }
 
@@ -16,5 +16,12 @@ body {
 }
 
 #image-placement img {
-  height: 250px;
+  height: 300px;
+  width: 300px;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+#image-placement img.onClick {
+  border: 7px solid red;
 }

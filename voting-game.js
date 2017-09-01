@@ -30,16 +30,22 @@ imageObjects.push (new ImageData ("wine_glass.jpg", "wine glass"));
 
 
 function addImage(src, title) {
+  // document.getElementById("image-placement").innerHTML="";
   var container = document.getElementById("image-placement");
   var image = document.createElement("img");
   console.log(image);
   image.src = src;
   image.title= title;
   image.addEventListener("click", recordClick);
+  image.addEventListener("click", imageReload);
   container.appendChild(image);
 }
 
 function showImages() {
+document.getElementById("image-placement").innerHTML="";
+document.getElementById("directions").innerHTML="Click on your favorite picture.";
+// document.getElementById("status").innerHTML = "Click on your favorite picture.";
+
   var index1 = Math.floor(Math.random() * 14)
   addImage("images/"+imageObjects[index1].src, imageObjects[index1].title);
   console.log(imageObjects[index1]);
@@ -60,6 +66,7 @@ function showImages() {
 function recordClick(event) {
   var imageClickedTitle = event.target.title;
   var index = 0;
+  event.target.classList.add("onClick");
   do {
     var clicked=imageObjects[index];
     if (imageClickedTitle==clicked.title){
@@ -72,5 +79,24 @@ function recordClick(event) {
 
   }
   while (imageClickedTitle != clicked.title);
+
+}
+
+var reloadCounter =1;
+function imageReload () {
+setTimeout(function (){
+  document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times.";
+  if (reloadCounter<15){
+  showImages();
+  // recordClick();
+  reloadCounter++;
+}
+else {
+document.getElementById("directions").innerHTML="";
+  document.getElementById("status").innerHTML= "Thanks for playing the voting game!  Here's your results!";
+  document.getElementById("image-placement").innerHTML="";
+}
+},300); //added timeout delay to allow red border to show up on click.
+
 }
   window.addEventListener("load", showImages);
