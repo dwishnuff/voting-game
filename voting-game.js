@@ -6,11 +6,8 @@ var ImageData = function (src, title) {
   this.src = src;
   this.title = title;
   this.imageTotalVotes = 0;
-
-
+  this.label = title;
 }
-
-// var imageNames = ["bag.jpg", "banana.jpg", "boots.jpg", "chair.jpg", "cthulhu.jpg", "dragon.jpg", "pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.jpg", "water_can.jpg", "wine_glass.jpg"];
 
 var imageObjects = [];
 imageObjects.push (new ImageData ("bag.jpg", "bag"));
@@ -82,20 +79,20 @@ function recordClick(event) {
 
 }
 
-function imageCounterStats () {
-  var ulElement= document.createElement("ul");
-  ulElement.innerText= "Pictures and Votes"
-  document.getElementById("status").appendChild(ulElement);
-  for (var i=0; i<imageObjects.length; i++){
-    var liElement = document.createElement("li");
-    // var li2Element =document.createElement ("li");
-    var currentImage = imageObjects[i];
-    liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
-    ulElement.appendChild(liElement);
-    // li2Element.innerText= imageObjects.imageTotalVotes;
-    // liElement.appendChild(li2Element);
-  }
-}
+// function imageCounterStats () {
+//   var ulElement= document.createElement("ul");
+//   ulElement.innerText= "Pictures and Votes"
+//   document.getElementById("status").appendChild(ulElement);
+//   for (var i=0; i<imageObjects.length; i++){
+//     var liElement = document.createElement("li");
+//     // var li2Element =document.createElement ("li");
+//     var currentImage = imageObjects[i];
+//     liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
+//     ulElement.appendChild(liElement);
+//     // li2Element.innerText= imageObjects.imageTotalVotes;
+//     // liElement.appendChild(li2Element);
+//   }
+// }
 
 var reloadCounter =1;
 function imageReload () {
@@ -110,7 +107,7 @@ function imageReload () {
       document.getElementById("directions").innerHTML="";
       document.getElementById("status").innerHTML= "Thanks for playing the voting game! " +"  Here's your results!";
       document.getElementById("image-placement").innerHTML="";
-      imageCounterStats();
+      displayChart();
     }
   },300); //added timeout delay to allow red border and zoom to show up on click.
 
