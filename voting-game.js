@@ -42,9 +42,9 @@ function addImage(src, title) {
 }
 
 function showImages() {
-document.getElementById("image-placement").innerHTML="";
-document.getElementById("directions").innerHTML="Click on your favorite picture.";
-// document.getElementById("status").innerHTML = "Click on your favorite picture.";
+  document.getElementById("image-placement").innerHTML="";
+  document.getElementById("directions").innerHTML="Click on your favorite picture.";
+  // document.getElementById("status").innerHTML = "Click on your favorite picture.";
 
   var index1 = Math.floor(Math.random() * 14)
   addImage("images/"+imageObjects[index1].src, imageObjects[index1].title);
@@ -84,19 +84,35 @@ function recordClick(event) {
 
 var reloadCounter =1;
 function imageReload () {
-setTimeout(function (){
-  document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times.";
-  if (reloadCounter<15){
-  showImages();
-  // recordClick();
-  reloadCounter++;
-}
-else {
-document.getElementById("directions").innerHTML="";
-  document.getElementById("status").innerHTML= "Thanks for playing the voting game!  Here's your results!";
-  document.getElementById("image-placement").innerHTML="";
-}
-},300); //added timeout delay to allow red border to show up on click.
+  setTimeout(function (){
+    document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times.";
+    if (reloadCounter<15){
+      showImages();
+      // recordClick();
+      reloadCounter++;
+    }
+    else {
+      document.getElementById("directions").innerHTML="";
+      document.getElementById("status").innerHTML= "Thanks for playing the voting game!  Here's your results!";
+      document.getElementById("image-placement").innerHTML="";
+      imageCounterStats();
+    }
+  },300); //added timeout delay to allow red border and zoom to show up on click.
 
 }
-  window.addEventListener("load", showImages);
+
+function imageCounterStats (imageObjects) {
+  var ulElement= document.createElement("ul");
+  ulElement.innerText= "Pictures and Votes"
+  document.getElementById("status").appendChild(ulElement);
+  for (var i=0; i<imageObjects.length; i++){
+    var liElement = document.createElement("li");
+    // var li2Element =document.createElement ("li");
+    liElement.innerText = imageObjects.title[i]+"votes: "+imageObjects.imageTotalVotes[i];
+    ulElement.appendChild(liElement);
+    // li2Element.innerText= imageObjects.imageTotalVotes;
+    // liElement.appendChild(li2Element);
+  }
+}
+
+window.addEventListener("load", showImages);

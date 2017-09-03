@@ -24,4 +24,5 @@ body {
 
 #image-placement img.onClick {
   border: 7px solid red;
+  zoom: 125%;
 }
