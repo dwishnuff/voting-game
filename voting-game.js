@@ -82,6 +82,20 @@ function recordClick(event) {
 
 }
 
+function imageCounterStats () {
+  var ulElement= document.createElement("ul");
+  ulElement.innerText= "Pictures and Votes"
+  document.getElementById("status").appendChild(ulElement);
+  for (var i=0; i<imageObjects.length; i++){
+    var liElement = document.createElement("li");
+    // var li2Element =document.createElement ("li");
+    liElement.innerText = imageData.title[i]+" -- votes: "+imageData.imageTotalVotes[i];
+    ulElement.appendChild(liElement);
+    // li2Element.innerText= imageObjects.imageTotalVotes;
+    // liElement.appendChild(li2Element);
+  }
+}
+
 var reloadCounter =1;
 function imageReload () {
   setTimeout(function (){
@@ -101,18 +115,6 @@ function imageReload () {
 
 }
 
-function imageCounterStats (imageObjects) {
-  var ulElement= document.createElement("ul");
-  ulElement.innerText= "Pictures and Votes"
-  document.getElementById("status").appendChild(ulElement);
-  for (var i=0; i<imageObjects.length; i++){
-    var liElement = document.createElement("li");
-    // var li2Element =document.createElement ("li");
-    liElement.innerText = imageObjects.title[i]+"votes: "+imageObjects.imageTotalVotes[i];
-    ulElement.appendChild(liElement);
-    // li2Element.innerText= imageObjects.imageTotalVotes;
-    // liElement.appendChild(li2Element);
-  }
-}
+
 
 window.addEventListener("load", showImages);
