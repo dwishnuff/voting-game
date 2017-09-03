@@ -46,19 +46,19 @@ function showImages() {
   document.getElementById("directions").innerHTML="Click on your favorite picture.";
   // document.getElementById("status").innerHTML = "Click on your favorite picture.";
 
-  var index1 = Math.floor(Math.random() * 14)
+  var index1 = Math.floor(Math.random() * imageObjects.length)
   addImage("images/"+imageObjects[index1].src, imageObjects[index1].title);
   console.log(imageObjects[index1]);
 
-  var index2 = Math.floor(Math.random() * 14)
+  var index2 = Math.floor(Math.random() * imageObjects.length)
   while (index2 == index1) {
-    index2=Math.floor(Math.random() * 14)
+    index2=Math.floor(Math.random() * imageObjects.length)
   }
   addImage("images/"+imageObjects[index2].src, imageObjects[index2].title);
 
-  var index3 = Math.floor(Math.random() * 14)
+  var index3 = Math.floor(Math.random() * imageObjects.length)
   while (index3 == index1 || index3 == index2) {
-    index3 = Math.floor(Math.random() * 14)
+    index3 = Math.floor(Math.random() * imageObjects.length)
   }
   addImage("images/"+imageObjects[index3].src, imageObjects[index3].title);
 }
@@ -108,7 +108,7 @@ function imageReload () {
     }
     else {
       document.getElementById("directions").innerHTML="";
-      document.getElementById("status").innerHTML= "Thanks for playing the voting game!  Here's your results!";
+      document.getElementById("status").innerHTML= "Thanks for playing the voting game! " +"  Here's your results!";
       document.getElementById("image-placement").innerHTML="";
       imageCounterStats();
     }
