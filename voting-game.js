@@ -89,7 +89,8 @@ function imageCounterStats () {
   for (var i=0; i<imageObjects.length; i++){
     var liElement = document.createElement("li");
     // var li2Element =document.createElement ("li");
-    liElement.innerText = imageData.title[i]+" -- votes: "+imageData.imageTotalVotes[i];
+    var currentImage = imageObjects[i];
+    liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
     ulElement.appendChild(liElement);
     // li2Element.innerText= imageObjects.imageTotalVotes;
     // liElement.appendChild(li2Element);

@@ -26,3 +26,7 @@ body {
   border: 7px solid red;
   zoom: 108%;
 }
+
+li:hover {
+  background-color: #99a0aa;
+}
