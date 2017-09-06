@@ -34,7 +34,7 @@ function addImage(src, title) {
   image.src = src;
   image.title= title;
   image.addEventListener("click", recordClick);
-  image.addEventListener("click", imageReload);
+  // image.addEventListener("click", imageReload);
   container.appendChild(image);
 }
 
@@ -70,13 +70,14 @@ function recordClick(event) {
       console.log("Image Clicked: "+clicked.title);
       clicked.imageTotalVotes++;
       console.log(clicked.imageTotalVotes);
+      console.log("reload counter" +reloadCounter)
     } else {
       index++;
     }
 
   }
   while (imageClickedTitle != clicked.title);
-
+imageReload();
 }
 
 // function imageCounterStats () {
@@ -94,6 +95,15 @@ function recordClick(event) {
 //   }
 // }
 
+function voteAgain () {
+  reloadCounter =1;
+  document.getElementById("status").innerHTML="";
+  document.getElementById("button").innerHTML="";
+  // imageReload();
+  showImages();
+}
+
+
 var reloadCounter =1;
 function imageReload () {
   setTimeout(function (){
@@ -101,7 +111,7 @@ function imageReload () {
     if (reloadCounter<15){
       showImages();
       // recordClick();
-      reloadCounter++;
+reloadCounter++
     }
     else {
       document.getElementById("directions").innerHTML="";
@@ -109,6 +119,7 @@ function imageReload () {
       document.getElementById("image-placement").innerHTML="";
       displayChart();
     }
+    ;
   },300); //added timeout delay to allow red border and zoom to show up on click.
 
 }

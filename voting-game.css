@@ -30,3 +30,15 @@ body {
 li:hover {
   background-color: #99a0aa;
 }
+
+input[type=button]{
+  width: 100%;
+background-size: 100%;
+background-color: #99a0aa;
+font-family: "Slabo 27px", serif;
+font-size: 1.5em;
+color: white;
+}
+ input[type=button]:hover{
+   background-color: red;
+ }

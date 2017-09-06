@@ -1,13 +1,22 @@
 function displayChart() {
+  var input = document.createElement("input");
+  input.setAttribute("type","button");
+  input.setAttribute("value","Vote Again");
+  input.setAttribute("onClick","voteAgain()");
+  button.appendChild(input);
+
   for (i = 0; i <imageObjects.length; i++) {
     imageObjects[i].y = imageObjects[i].imageTotalVotes;
   }
 	var chart = new CanvasJS.Chart("status",
 	{
-		animationEnabled: true,
+backgroundColor: null,
+    animationEnabled: true,
 		theme: "theme2",
 		//exportEnabled: true,
 		title:{
+fontFamily: "Monotype",
+      fontColor: "white",
 			text: "Voting Results"
 		},
 		data: [
