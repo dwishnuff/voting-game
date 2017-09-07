@@ -6,7 +6,14 @@ var ImageData = function (src, title) {
   this.src = src;
   this.title = title;
   this.imageTotalVotes = 0;
+  this.indexLabel = title;
   this.label = title;
+}
+
+function sortNumber(left, right) {
+  if (left.imageTotalVotes< right.imageTotalVotes) { return 1 }
+  else if (left.imageTotalVotes > right.imageTotalVotes) { return -1 }
+  else { return 0 }
 }
 
 var imageObjects = [];
@@ -27,21 +34,18 @@ imageObjects.push (new ImageData ("wine_glass.jpg", "wine glass"));
 
 
 function addImage(src, title) {
-  // document.getElementById("image-placement").innerHTML="";
   var container = document.getElementById("image-placement");
   var image = document.createElement("img");
   console.log(image);
   image.src = src;
   image.title= title;
   image.addEventListener("click", recordClick);
-  // image.addEventListener("click", imageReload);
   container.appendChild(image);
 }
 
 function showImages() {
   document.getElementById("image-placement").innerHTML="";
   document.getElementById("directions").innerHTML="Click on your favorite picture.";
-  // document.getElementById("status").innerHTML = "Click on your favorite picture.";
 
   var index1 = Math.floor(Math.random() * imageObjects.length)
   addImage("images/"+imageObjects[index1].src, imageObjects[index1].title);
@@ -77,29 +81,29 @@ function recordClick(event) {
 
   }
   while (imageClickedTitle != clicked.title);
-imageReload();
+  imageReload();
 }
 
-// function imageCounterStats () {
-//   var ulElement= document.createElement("ul");
-//   ulElement.innerText= "Pictures and Votes"
-//   document.getElementById("status").appendChild(ulElement);
-//   for (var i=0; i<imageObjects.length; i++){
-//     var liElement = document.createElement("li");
-//     // var li2Element =document.createElement ("li");
-//     var currentImage = imageObjects[i];
-//     liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
-//     ulElement.appendChild(liElement);
-//     // li2Element.innerText= imageObjects.imageTotalVotes;
-//     // liElement.appendChild(li2Element);
-//   }
-// }
+function imageCounterStats () {
+  var ulElement= document.createElement("ul");
+  ulElement.innerText= "Pictures and Votes"
+  document.getElementById("status").appendChild(ulElement);
+  var sortedImages=imageObjects.sort(sortNumber);
+  for (var i=0; i<sortedImages.length; i++){
+    var liElement = document.createElement("li");
+    // var li2Element =document.createElement ("li");
+    var currentImage = sortedImages[i];
+    liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
+    ulElement.appendChild(liElement);
+    // li2Element.innerText= imageObjects.imageTotalVotes;
+    // liElement.appendChild(li2Element);
+  }
+}
 
 function voteAgain () {
   reloadCounter =1;
   document.getElementById("status").innerHTML="";
   document.getElementById("button").innerHTML="";
-  // imageReload();
   showImages();
 }
 
@@ -110,8 +114,7 @@ function imageReload () {
     document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times.";
     if (reloadCounter<15){
       showImages();
-      // recordClick();
-reloadCounter++
+      reloadCounter++
     }
     else {
       document.getElementById("directions").innerHTML="";

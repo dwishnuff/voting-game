@@ -5,6 +5,20 @@ h1, h2 {
   color: white;
 }
 
+h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+ul {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+li {
+  font-size: 0.5em;
+}
+
 body {
   background: linear-gradient(#3a3d42,#292b2d,black);
   height: 100vh;
@@ -32,13 +46,19 @@ li:hover {
 }
 
 input[type=button]{
-  width: 100%;
-background-size: 100%;
-background-color: #99a0aa;
-font-family: "Slabo 27px", serif;
-font-size: 1.5em;
-color: white;
+  width: 60%;
+  height: 2em;
+  background-size: 100%;
+  background-color: #4e5259;
+  font-family: "Slabo 27px", serif;
+  font-size: 1.5em;
+  color: white;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  border-style: none;
 }
- input[type=button]:hover{
-   background-color: red;
- }
+
+input[type=button]:hover{
+  background-color: red;
+}
