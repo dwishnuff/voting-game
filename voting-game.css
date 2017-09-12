@@ -11,16 +11,30 @@ h1 {
 }
 
 #spanTitle {
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-weight: bold;
   width: 50%;
   text-decoration: underline overline white;
+
 }
 
 
 .listResults {
+  transition: 0.2s;
   font-size: 1em;
   text-decoration: none;
+  text-transform: capitalize;
+  padding-top: 10px;
+
+}
+
+.listResults:hover {
+  /*background-color: #99a0aa;*/
+  background-color: black;
+  /*border: solid transparent;*/
+  border-radius: 7px;
+  color: #99a0aa;
+
 }
 
 
@@ -50,14 +64,17 @@ body {
   opacity: 0.5;
 }
 
-li:hover {
-  background-color: #99a0aa;
-  color: black;
+#image-placement img:hover {
+    opacity: 0.5;
+    padding: 4px;
 }
+
+
 
 input[type=button]{
   width: 60%;
   height: 2em;
+  transition: background-color 0.25s;
   background-size: 100%;
   background-color: #4e5259;
   font-family: "Slabo 27px", serif;
