@@ -86,11 +86,15 @@ function recordClick(event) {
 
 function imageCounterStats () {
   var ulElement= document.createElement("ul");
-  ulElement.innerText= "Pictures and Votes"
-  document.getElementById("status").appendChild(ulElement);
+  var spanTitle =document.createElement("span");
+  spanTitle.innerText= "Pictures and Votes"
+  spanTitle.setAttribute("id","spanTitle");
+  document.getElementById("displayResults").appendChild(ulElement);
+  ulElement.appendChild(spanTitle);
   var sortedImages=imageObjects.sort(sortNumber);
   for (var i=0; i<sortedImages.length; i++){
     var liElement = document.createElement("li");
+    liElement.setAttribute("class", "listResults");
     // var li2Element =document.createElement ("li");
     var currentImage = sortedImages[i];
     liElement.innerText = currentImage.title+" -- votes: "+currentImage.imageTotalVotes;
@@ -104,6 +108,7 @@ function voteAgain () {
   reloadCounter =1;
   document.getElementById("status").innerHTML="";
   document.getElementById("button").innerHTML="";
+  document.getElementById("displayResults").innerHTML="";
   showImages();
 }
 
@@ -111,8 +116,8 @@ function voteAgain () {
 var reloadCounter =1;
 function imageReload () {
   setTimeout(function (){
-    document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times.";
-    if (reloadCounter<15){
+    document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times. Please keep clicking.";
+    if (reloadCounter<3){
       showImages();
       reloadCounter++
     }

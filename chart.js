@@ -8,7 +8,7 @@ function displayChart() {
   for (i = 0; i <imageObjects.length; i++) {
     imageObjects[i].y = imageObjects[i].imageTotalVotes;
   }
-  var chart = new CanvasJS.Chart("status",
+  var chart = new CanvasJS.Chart("displayChart",
   {
     backgroundColor: null,
     animationEnabled: true,

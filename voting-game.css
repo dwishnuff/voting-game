@@ -1,27 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
 
-h1, h2 {
+/*body {
   font-family: "Slabo 27px", serif;
   color: white;
-}
+}*/
 
 h1 {
   font-size: 3em;
   font-weight: bold;
 }
 
-ul {
+#spanTitle {
   font-size: 1.5em;
   font-weight: bold;
+  width: 50%;
+  text-decoration: underline overline white;
 }
 
-li {
-  font-size: 0.5em;
+
+.listResults {
+  font-size: 1em;
+  text-decoration: none;
 }
+
+
 
 body {
   background: linear-gradient(#3a3d42,#292b2d,black);
   height: 100vh;
+  font-family: "Slabo 27px", serif;
+  color: white;
 }
 
 #image-placement {
@@ -38,11 +46,13 @@ body {
 
 #image-placement img.onClick {
   border: 7px solid red;
-  zoom: 108%;
+  zoom: 102%;
+  opacity: 0.5;
 }
 
 li:hover {
   background-color: #99a0aa;
+  color: black;
 }
 
 input[type=button]{
@@ -61,4 +71,16 @@ input[type=button]{
 
 input[type=button]:hover{
   background-color: red;
+}
+
+#displayResults {
+  display:flex;
+}
+
+#displayVotes {
+  /*width: 50%;*/
+}
+
+#displayChart {
+  width:50%;
 }
