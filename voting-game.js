@@ -5,6 +5,7 @@ var ImageData = function (src, title) {
   this.imageTotalVotes = 0;
   this.indexLabel = title;
   this.label = title;
+  this.exploded = true;
 }
 
 
@@ -126,7 +127,7 @@ var reloadCounter =1;
 function imageReload () {
   setTimeout(function (){
     document.getElementById("status").innerHTML = "You have voted " +reloadCounter +" of 15 times. Please keep clicking.";
-    if (reloadCounter<3){
+    if (reloadCounter<15){
       showImages();
       reloadCounter++
     }
@@ -137,7 +138,7 @@ function imageReload () {
       displayChart();
     }
     ;
-  },75); //added timeout delay to allow red border and zoom to show up on click.
+  },125); //added timeout delay to allow red border and zoom to show up on click.
 
 }
 
